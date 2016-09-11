@@ -1,0 +1,31 @@
+{
+  "name": "fnn-autocomplete",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/fnn-autocomplete.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xneek/fnn-autocomplete.git"
+  },
+  "author": "Nikolay Fedoseev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xneek/fnn-autocomplete/issues"
+  },
+  "homepage": "https://github.com/xneek/fnn-autocomplete#readme",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.14.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-clean-css": "^2.0.12",
+    "gulp-less": "^3.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^2.0.0",
+    "gulp-watch": "^4.3.9",
+    "less-plugin-autoprefix": "^1.5.1"
+  }
+}
