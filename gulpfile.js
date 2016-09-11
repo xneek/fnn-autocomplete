@@ -13,11 +13,13 @@ var autoprefix = new LessAutoprefix({ browsers: ['last 2 versions'] });
 
 gulp.task('es6', function(){
     return gulp.src('src/js/*.js')
+	.pipe(sourcemaps.init())
         .pipe(babel({
             presets: ['es2015']
         }))
         .pipe(gulp.dest('dist'))
 	.pipe(uglify())
+	.pipe(sourcemaps.write('.'))
         .pipe(rename('fnn-autocomplete.min.js'))
         .pipe(gulp.dest('dist'))
 });
@@ -25,13 +27,15 @@ gulp.task('es6', function(){
 
 gulp.task('less', function () {
     return gulp.src('src/less/*.less')
+	.pipe(sourcemaps.init())
         .pipe(less({
     		plugins: [autoprefix]
   	 }))
-	.pipe(sourcemaps.write())
+	//.pipe(sourcemaps.write())
         .pipe(gulp.dest('dist'))
+	.pipe(sourcemaps.init())
 	.pipe(cleanCSS())
-	.pipe(sourcemaps.write())
+	.pipe(sourcemaps.write('.'))
         .pipe(rename('fnn-autocomplete.min.css'))
         .pipe(gulp.dest('dist'))
 });
