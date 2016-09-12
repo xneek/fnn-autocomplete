@@ -84,10 +84,18 @@ class fnnAutocomplete {
 			})
 			
 			if(s==0){
-				this.results.appendChild(this.opts.noFound)
+				if(typeof this.opts.noFound === 'function'){
+					this.results.appendChild(this.opts.noFound(term))
+				} else {
+					this.results.appendChild(this.opts.noFound)
+				}
 			}
 		} else {
-			this.results.appendChild(this.opts.noFound)
+				if(typeof this.opts.noFound === 'function'){
+					this.results.appendChild(this.opts.noFound(term))
+				} else {
+					this.results.appendChild(this.opts.noFound)
+				}
 		}
 	}
 	
