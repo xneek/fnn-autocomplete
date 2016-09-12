@@ -7,14 +7,14 @@ const sourcemaps = require('gulp-sourcemaps');
 const cleanCSS = require('gulp-clean-css');
 const watch = require('gulp-watch');
 
-var LessAutoprefix = require('less-plugin-autoprefix');
-var autoprefix = new LessAutoprefix({ browsers: ['last 2 versions'] });
+const LessAutoprefix = require('less-plugin-autoprefix');
+const autoprefix = new LessAutoprefix({ browsers: ['last 2 versions'] });
  
 
 gulp.task('es6', function(){
     return gulp.src('src/js/*.js')
 	.pipe(sourcemaps.init())
-        .pipe(babel({
+    .pipe(babel({
             presets: ['es2015']
         }))
         .pipe(gulp.dest('dist'))
@@ -41,12 +41,11 @@ gulp.task('less', function () {
 });
 
 
+
+
 gulp.task('watch', function () {
-    return watch('src/**/*.*', function () {
-      
-        gulp.run('es6');
-	gulp.run('less');
-    });
+    gulp.watch('src/**/*.js', ['es6']);
+	gulp.watch('src/**/*.less', ['less']);
 });
 
 

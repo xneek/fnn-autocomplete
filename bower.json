@@ -2,8 +2,8 @@
   "name": "fnn-autocomplete",
   "description": "Autocomplete control for modern browsers",
   "main": [
-	"dist/fnn-autocomplete.js",
-	"dist/fnn-autocomplete.css"
+    "dist/fnn-autocomplete.js",
+    "dist/fnn-autocomplete.css"
   ],
   "authors": [
     "Nikolay Fedoseev <info@fednik.ru>"
@@ -21,10 +21,14 @@
   "ignore": [
     "**/.*",
     "node_modules",
-    "src"
+    "src",
+	"bower_components"
   ],
   "repository": {
-  "type": "git",
-  "url": "git://github.com/xneek/fnn-autocomplete.git"
-}
+    "type": "git",
+    "url": "git://github.com/xneek/fnn-autocomplete.git"
+  },
+  "dependencies": {
+    "crEl": "https://github.com/xneek/crEl.git"
+  }
 }
