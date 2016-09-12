@@ -84,10 +84,10 @@ class fnnAutocomplete {
 			})
 			
 			if(s==0){
-				this.results.appendChild(crEl('li',this.opts.noFound))
+				this.results.appendChild(this.opts.noFound)
 			}
 		} else {
-			this.results.appendChild(crEl('li',this.opts.noFound))
+			this.results.appendChild(this.opts.noFound)
 		}
 	}
 	
@@ -118,7 +118,7 @@ class fnnAutocomplete {
 			loader: false,
 			closeBtn: true,
 			limit:3,
-			noFound: 'Не найдено'
+			noFound: crEl('li','Не найдено')
 		},opts);
 		
 	

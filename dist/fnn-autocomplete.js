@@ -93,10 +93,10 @@ var fnnAutocomplete = function () {
 				});
 
 				if (s == 0) {
-					this.results.appendChild(crEl('li', this.opts.noFound));
+					this.results.appendChild(this.opts.noFound);
 				}
 			} else {
-				this.results.appendChild(crEl('li', this.opts.noFound));
+				this.results.appendChild(this.opts.noFound);
 			}
 		}
 	}, {
@@ -138,7 +138,7 @@ var fnnAutocomplete = function () {
 			loader: false,
 			closeBtn: true,
 			limit: 3,
-			noFound: 'Не найдено'
+			noFound: crEl('li', 'Не найдено')
 		}, opts);
 
 		var container = crEl('div', { c: 'fnn-autocomplete-container' });
