@@ -51,6 +51,14 @@ class fnnAutocomplete {
 			th.select(data);
 		})
 		
+		el.addEventListener('mousemove', function(){
+			this.parentNode.querySelectorAll('.active').forEach((k)=>{
+				k.classList.remove('active')
+			})
+			this.classList.add('active')
+		}, false)
+
+		
 
 
 		return el;
@@ -139,7 +147,7 @@ class fnnAutocomplete {
 
 			let str = this.value.trim();
 			if(str.length<=th.opts.minLength && th.opts.source && typeof th.opts.source === 'function'){
-				this.opts.data = [];
+				th.opts.data = [];
 			}
 			
 			if(str.length>th.opts.minLength){
@@ -163,7 +171,9 @@ class fnnAutocomplete {
 			
 		}, false)		  
 		  
-		  
+		input.addEventListener('blur',function(){
+			setTimeout(function(){ th._close();},500)
+		}, false)			  
 		  
 		input.addEventListener('keydown', function(event){
 			if(event.keyCode===13){
