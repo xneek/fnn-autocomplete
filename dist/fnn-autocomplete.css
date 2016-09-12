@@ -39,6 +39,7 @@
   list-style: none;
   padding: 0;
   width: 100%;
+  position: absolute;
 }
 .fnn-autocomplete-container .fnn-autocomplete-results .active {
   background: rgba(0, 0, 0, 0.3333);
@@ -57,7 +58,4 @@
   text-overflow: ellipsis;
   color: #212121;
   box-sizing: border-box;
-}
-.fnn-autocomplete-container .fnn-autocomplete-results > *:hover {
-  background: rgba(0, 0, 0, 0.3333);
 }
