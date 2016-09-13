@@ -66,6 +66,12 @@ class fnnAutocomplete {
 	
 	_search (term){
 		let th = this;
+		
+		function NoFound (){
+			let el = (typeof th.opts.noFound==='function'?th.opts.noFound(term):crEl('li',th.opts.noFound));
+			if(th.opts.autoSelect){el.classList.add('active')}
+			return el;
+		}
 		th.selected = false;
 		this.results.innerHTML = null;
 		let s = 0;
@@ -84,18 +90,10 @@ class fnnAutocomplete {
 			})
 			
 			if(s==0){
-				if(typeof this.opts.noFound === 'function'){
-					this.results.appendChild(this.opts.noFound(term))
-				} else {
-					this.results.appendChild(this.opts.noFound)
-				}
+				this.results.appendChild(new NoFound())
 			}
 		} else {
-				if(typeof this.opts.noFound === 'function'){
-					this.results.appendChild(this.opts.noFound(term))
-				} else {
-					this.results.appendChild(this.opts.noFound)
-				}
+			this.results.appendChild(new NoFound())
 		}
 	}
 	
@@ -184,13 +182,16 @@ class fnnAutocomplete {
 		}, false)			  
 		  
 		input.addEventListener('keydown', function(event){
+			
 			if(event.keyCode===13){
+				event.preventDefault();
 			  if(th.results.querySelector('.active')){
 				th.results.querySelector('.active').click();
 			  } else {
 				el = th.results.childNodes[0];
 				if(el){ el.click()}
 			  }
+			  return false;
 			} else if(event.keyCode===38){ //up
 			   event.preventDefault();
 				let active = th.results.querySelector('.active');

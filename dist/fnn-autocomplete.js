@@ -73,6 +73,14 @@ var fnnAutocomplete = function () {
 		key: '_search',
 		value: function _search(term) {
 			var th = this;
+
+			function NoFound() {
+				var el = typeof th.opts.noFound === 'function' ? th.opts.noFound(term) : crEl('li', th.opts.noFound);
+				if (th.opts.autoSelect) {
+					el.classList.add('active');
+				}
+				return el;
+			}
 			th.selected = false;
 			this.results.innerHTML = null;
 			var s = 0;
@@ -93,18 +101,10 @@ var fnnAutocomplete = function () {
 				});
 
 				if (s == 0) {
-					if (typeof this.opts.noFound === 'function') {
-						this.results.appendChild(this.opts.noFound(term));
-					} else {
-						this.results.appendChild(this.opts.noFound);
-					}
+					this.results.appendChild(new NoFound());
 				}
 			} else {
-				if (typeof this.opts.noFound === 'function') {
-					this.results.appendChild(this.opts.noFound(term));
-				} else {
-					this.results.appendChild(this.opts.noFound);
-				}
+				this.results.appendChild(new NoFound());
 			}
 		}
 	}, {
@@ -206,7 +206,9 @@ var fnnAutocomplete = function () {
 		}, false);
 
 		input.addEventListener('keydown', function (event) {
+
 			if (event.keyCode === 13) {
+				event.preventDefault();
 				if (th.results.querySelector('.active')) {
 					th.results.querySelector('.active').click();
 				} else {
@@ -215,6 +217,7 @@ var fnnAutocomplete = function () {
 						el.click();
 					}
 				}
+				return false;
 			} else if (event.keyCode === 38) {
 				//up
 				event.preventDefault();

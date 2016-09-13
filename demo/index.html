@@ -49,6 +49,10 @@
 				$.getJSON('i_am_url.php',{q:term},function(res){
 					cb(res)
 				}) 
+			}, noFound: function(name){
+				return crEl('li',{e:{click:function(){
+					alert(name)
+					}}},'::'+name)
 			}
 			});
 			console.log(aCompl);
