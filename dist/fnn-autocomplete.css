@@ -40,6 +40,7 @@
   padding: 0;
   width: 100%;
   position: absolute;
+  z-index: 99999;
 }
 .fnn-autocomplete-container .fnn-autocomplete-results .active {
   background: rgba(0, 0, 0, 0.3333);
