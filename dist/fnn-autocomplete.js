@@ -174,7 +174,7 @@ var fnnAutocomplete = function () {
 		input.addEventListener('input', function () {
 
 			var str = this.value.trim();
-			if (str.length <= th.opts.minLength && th.opts.source && typeof th.opts.source === 'function') {
+			if (str.length >= th.opts.minLength && th.opts.source && typeof th.opts.source === 'function') {
 				th.opts.data = [];
 			}
 
