@@ -81,7 +81,7 @@ class fnnAutocomplete {
 				if(th.opts.key && th.opts.key.length){
 					res = k[th.opts.key];
 				}
-				if( (th.opts.limit && th.opts.limit>0 && th.opts.limit>s) && (term=='%' || res.toLowerCase().indexOf(term.toLowerCase().trim())!=-1)){
+				if( (th.opts.limit && th.opts.limit>0 && th.opts.limit>s) && (term=='%' || (res && res.length && res.toLowerCase().indexOf(term.toLowerCase().trim())!=-1))){
 					let li = th.render(k)
 					if(th.opts.autoSelect && s==0){li.classList.add('active')}
 					th.results.appendChild(li);
@@ -124,12 +124,16 @@ class fnnAutocomplete {
 			loader: false,
 			closeBtn: true,
 			limit:3,
-			noFound: crEl('li','Не найдено')
+			noFound: crEl('li','Не найдено'),
+			containerAttr:{},
+			resultsAttr:{}
+			
 		},opts);
 		
 	
 		
-		let container = crEl('div',{c:'fnn-autocomplete-container'});
+		let container = crEl('div',this.opts.containerAttr || {});
+			container.classList.add('fnn-autocomplete-container');
 		input.parentNode.insertBefore(container, input);
 		input = input.parentElement.removeChild(input);
 		if(!input.classList.contains('fnn-autocomplete')){input.classList.add('fnn-autocomplete');}
@@ -144,9 +148,10 @@ class fnnAutocomplete {
 			this.loader = crEl('div',{c:'fnn-autocomplete-loader'}, crEl('div',{c:'fnn-autocomplete-loader-pct'}));
 			container.appendChild(this.loader);
 		}
-		this.results = crEl('ul',{c:'fnn-autocomplete-results'});
+		this.results = crEl('ul',this.opts.resultsAttr);
+		this.results.classList.add('fnn-autocomplete-results');
 		container.appendChild(this.results);
-		
+
 		let _t = null;
 		
 		input.addEventListener('input',function(){
@@ -171,7 +176,7 @@ class fnnAutocomplete {
 				this.focus()
 			}
 			
-			if(th.opts.autoOpen){
+			if(th.opts.autoOpen && !this.value.length){
 				th.search('%')
 			}
 			
