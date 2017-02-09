@@ -139,8 +139,10 @@ class fnnAutocomplete {
 		if(!input.classList.contains('fnn-autocomplete')){input.classList.add('fnn-autocomplete');}
 		container.appendChild(input);
 		if(this.opts.closeBtn != false){
-			this.closeBtn = crEl('button',{c:'fnn-autocomplete-close', e: {click:function(){
+			this.closeBtn = crEl('button',{c:'fnn-autocomplete-close', e: {click:function(event){
+				event.preventDefault();
 				th.clear();
+				return false;
 			}}}, '×');
 			container.appendChild(this.closeBtn);
 		}
