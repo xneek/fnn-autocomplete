@@ -89,7 +89,7 @@ class fnnAutocomplete {
 				}
 			})
 			
-			if(s==0){
+			if(s==0 || th.opts.notFoundForce){
 				this.results.appendChild(new NoFound())
 			}
 		} else {
@@ -125,6 +125,7 @@ class fnnAutocomplete {
 			closeBtn: true,
 			limit:3,
 			noFound: crEl('li','Не найдено'),
+			noFoundForce: false,
 			containerAttr:{},
 			resultsAttr:{}
 			

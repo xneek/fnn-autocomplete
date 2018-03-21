@@ -100,7 +100,7 @@ var fnnAutocomplete = function () {
 					}
 				});
 
-				if (s == 0) {
+				if (s == 0 || th.opts.notFoundForce) {
 					this.results.appendChild(new NoFound());
 				}
 			} else {
@@ -129,7 +129,7 @@ var fnnAutocomplete = function () {
 	}]);
 
 	function fnnAutocomplete(input) {
-		var opts = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+		var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
 		_classCallCheck(this, fnnAutocomplete);
 
@@ -147,6 +147,7 @@ var fnnAutocomplete = function () {
 			closeBtn: true,
 			limit: 3,
 			noFound: crEl('li', 'Не найдено'),
+			noFoundForce: false,
 			containerAttr: {},
 			resultsAttr: {}
 
