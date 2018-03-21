@@ -89,7 +89,7 @@ class fnnAutocomplete {
 				}
 			})
 			
-			if(s==0 || th.opts.noFoundForce){
+			if(s==0 || ( term.length>1 && th.opts.noFoundForce ) ){
 				this.results.appendChild(new NoFound())
 			}
 		} else {
