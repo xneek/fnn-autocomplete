@@ -90,7 +90,7 @@ var fnnAutocomplete = function () {
 					if (th.opts.key && th.opts.key.length) {
 						res = k[th.opts.key];
 					}
-					if (th.opts.limit && th.opts.limit > 0 && th.opts.limit > s && (term == '%' || res && res.length && res.toLowerCase().indexOf(term.toLowerCase().trim()) != -1)) {
+					if (th.opts.limit && th.opts.limit > 0 && th.opts.limit > s && (term == '%' || res && res.length && res.toLowerCase().indexOf(term.toLowerCase().trim()) != -1 || !th.opts.chache)) {
 						var li = th.render(k);
 						if (th.opts.autoSelect && s == 0) {
 							li.classList.add('active');
